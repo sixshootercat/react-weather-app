@@ -5,7 +5,6 @@ import Climate from './components/Climate';
 import Error from './components/Error'
 
 
-
 function App() {
   
   const [ search, setSearch ] = useState({
@@ -21,9 +20,10 @@ function App() {
   const { city, country } = search
 
   useEffect(() => {
+   
     const requestApi = async () => {
       if (request) {
-        const appId = 'ea5fffbc3b001e2b25648e49a7ebc214'
+        const appId = process.env.API_KEY
         const url = `http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&appid=${appId}`
         const res = await fetch(url)
         const result = await res.json()
